@@ -10,10 +10,8 @@ void test();
 #define FastIO        cin.tie(0);cout.tie(0);ios::sync_with_stdio(0);
 #define printv(v)     for(auto x:v){cout<<x<<" ";}cout<<endl;
 #define dbg(x)        cout<<#x<<" = "<<x<<endl;
-#define all(x)        x.begin(), x.end()
 #define SQ(a)         (a)*(a)
 #define PB            push_back
-#define MP            make_pair
 #define S             second
 #define F             first
 
@@ -47,7 +45,7 @@ typedef long double     ld;
 
 const ll INF = 9223372036854775807;
 const int OO = 2147483647;
-const ll MOD = 1e9 + 7;
+const ll MOD = 998244353;
 const ld EPS = 1e-9;
 const ld PI  = 3.141592653589793238;
 
@@ -60,15 +58,18 @@ int tc = 1;
 
 const int N = 3e5 + 5e3;
 
-ll n;
-
+ll n, x, y;
 
 // --------------------------------------
+
 
 
 // --------------------------------------
 
 void doTest(){
+    cin>>n;
+
+
 
 }
 
