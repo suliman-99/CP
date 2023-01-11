@@ -62,19 +62,60 @@ int tc = 1;
 // -----------------------------------------------------------------
 
 const int N = 3e5 + 5e3;
-
-ll n;
+ 
+ll n, a[105][105];
 
 // --------------------------------------
-
-
 
 // --------------------------------------
 
 void doTest(){
-
-
-
+    cin>>n;
+    for(int i = 0 ; i < n ; i ++){
+        for(int j = 0 ; j < n - i ; j++){
+            cin>>a[i][j];
+        }
+    }
+    string s;
+    for(int i = 0 ; i < n ; i ++){
+        s[i] = '?';
+    }
+    for(int i = 0 ; i < n ; i ++){
+        for(int j = 0 ; j < n - i ; j++){
+            if(a[i][j] == 1){
+                for(int k = i ; k <= i+j ; k++){
+                    s[k] = '1';
+                }
+            }
+        }
+    }
+    ll d = 0;
+    for(int i = 0 ; i < n ; i ++){
+        for(int j = 0 ; j < n - i ; j++){
+            if(a[i][j] == 2){
+                int ones = 0;
+                for(int k = i ; k <= i+j ; k++){
+                    if(s[k] == '1') ones++;
+                }
+                if(ones == j+1){
+                    cout<<0<<endl;
+                    return;
+                }
+                else if(ones == j){
+                    for(int k = i ; k <= i+j ; k++){
+                        if(s[k] == '?') s[k] = '0';
+                        break;
+                    }
+                }
+                else if(ones == 0){
+                    d += 2;
+                }
+                else{
+                    d += 1;
+                }
+            }
+        }
+    }
 }
 
 
@@ -85,10 +126,8 @@ int main(){
     FastIO
     cout<<fixed<<setprecision(15);
 
-
-
     // scanf("%d",&tc);
-    cin>>tc;
+    // cin>>tc;
     while(tc--) doTest();
 }
 

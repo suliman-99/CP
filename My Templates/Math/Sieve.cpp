@@ -27,7 +27,7 @@ typedef long long ll;
 \*****************************************/
 
 
-/// --- You Can Process Numbers <= sq(BIGGEST_PRIME) --- ///
+/// --- You Can Process Numbers <= BIGGEST_PRIME^2 --- ///
 const int BIGGEST_PRIME = 1e7 + 5;
 
 bool is_prime[BIGGEST_PRIME];

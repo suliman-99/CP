@@ -38,6 +38,7 @@
         "scoped_allocator": "cpp",
         "streambuf": "cpp",
         "valarray": "cpp",
-        "_other": "cpp"
+        "_other": "cpp",
+        "bit": "cpp"
     }
 }

@@ -62,19 +62,42 @@ int tc = 1;
 // -----------------------------------------------------------------
 
 const int N = 3e5 + 5e3;
-
-ll n;
+ 
+int n, k;
+pair<int,pair<int,int>> a[N];
 
 // --------------------------------------
-
 
 
 // --------------------------------------
 
 void doTest(){
-
-
-
+    cin>>n>>k;
+    int l, r;
+    cin>>l>>r;
+    for(int i = 0 ; i < n - 1 ; i ++){
+        cin>>a[i].S.F>>a[i].S.S;
+        a[i].F = a[i].S.F + a[i].S.S;
+    }
+    if(k > l + r){
+        cout<<"NO"<<endl;
+        return;
+    }
+    if(k<=l){
+        cout<<"YES"<<endl;
+        return;
+    }
+    sort(a, a+n-1);
+    reverse(a, a+n-1);
+    k-= r;
+    for(int i = 0 ; i < n - 1 ; i ++){
+        if(k<=a[i].S.F){
+            cout<<"YES"<<endl;
+            return;
+        }
+        if(k<=a[i].F) k-= a[i].S.S;
+    }
+    cout<<"NO"<<endl;
 }
 
 
@@ -84,8 +107,6 @@ int main(){
     test();
     FastIO
     cout<<fixed<<setprecision(15);
-
-
 
     // scanf("%d",&tc);
     cin>>tc;
