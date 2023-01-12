@@ -2,35 +2,36 @@
 using namespace std;
 
 typedef long long ll;
-const ll INF = 9223372036854775807;
 
 // -----------------------------------------------------------------
 
 #define LX (i<<1)
 #define RX (i<<1) | 1
 
-class SegTree {
+class SegTreeIdx {
     private:
-        vector<ll> seg;
+        vector<int> seg;
         int seg_str, seg_end;
-        ll skip_val = -INF;  /// ----- for max Segment_Tree ----- ///
-        // ll skip_val = INF;  /// ----- for min Segment_Tree ----- ///
+        ll* arr;
 
-        ll conquer(ll a1, ll a2){
-            return max(a1, a2); /// ----- for max Segment_Tree ----- ///
-            // return min(a1, a2); /// ----- for min Segment_Tree ----- ///
+        int conquer(int idx1, int idx2){
+            if(idx1 == -1) return idx2;
+            if(idx2 == -1) return idx1;
+            if(arr[idx1] > arr[idx2]) return idx1; /// ----- for max Segment_Tree ----- ///
+            // if(arr[idx1] < arr[idx2]) return idx1; /// ----- for min Segment_Tree ----- ///
+            else return idx2;
         }
 
         /// params = [root,  first_element,  last_element, base_array]
         /// params = [ 1  ,       0       ,     n-1      , base_array]
-        void build(int i, int l, int r, ll a[]){
+        void build(int i, int l, int r){
             if(l == r){
-                seg[i] = a[l];
+                seg[i] = l;
                 return;
             }
             int m = (l + r)/2;
-            build(LX, l, m, a);
-            build(RX, m+1, r, a);
+            build(LX, l, m);
+            build(RX, m+1, r);
             seg[i] = conquer(seg[LX], seg[RX]);
         }
         
@@ -38,7 +39,7 @@ class SegTree {
         /// params = [ 1  ,       0       ,     n-1      ,  index_to_be_updated,  new_value]
         void _update(int i, int l, int r, int idx, ll val){
             if(l == r){
-                seg[i] = val;
+                arr[l] = val;
                 return;
             }
             int m = (l + r)/2;
@@ -50,7 +51,7 @@ class SegTree {
         /// params = [root,  first_element,  last_element,  from,  to]
         /// params = [ 1  ,       0       ,     n-1      ,  from,  to]
         ll _get(int i, int l, int r, int from, int to){
-            if(from > to) return skip_val;
+            if(from > to) return -1;
             if(from == l && to == r) return seg[i];
             int m = (l + r)/2;
             return conquer(_get(LX, l, m, from, min(to,m)), _get(RX, m+1, r, max(from,m+1), to));
@@ -59,19 +60,13 @@ class SegTree {
 
     public:
 
-        /// params = [first_element,  last_element]
-        SegTree(int str, int end){
-            seg_str = str;
-            seg_end = end;
-            seg.assign(4*(seg_end-seg_str+1), 0);
-        }
-
         /// params = [first_element,  last_element, base array]
-        SegTree(int str, int end, ll a[]){
+        SegTreeIdx(int str, int end, ll a[]){
             seg_str = str;
             seg_end = end;
+            arr = a;
             seg.assign(4*(seg_end-seg_str+1), 0);
-            build(1, seg_str, seg_end, a);
+            build(1, seg_str, seg_end);
         }
         
         /// params = [index_to_be_updated,  new_value]
