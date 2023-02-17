@@ -74,3 +74,28 @@ template<typename T> T  geometric_series_sum_mod(T a, T r, ll n){
 }
 
 
+
+const int MAX_FACT = 1e7 + 5;
+ll factorial[MAX_FACT];
+
+void calc_factorials(){
+    factorial[0] = 1;
+    for(int i = 1 ; i < MAX_FACT ; i ++){
+        factorial[i] = (factorial[i-1]*i)%MOD;
+    }
+}
+
+/// ----- if r < 1e7 and n < 1e7 -----
+ll combinatory1(ll n,ll r){
+    return (factorial[n]*invers_mod((factorial[r]*factorial[n-r])%MOD))%MOD;
+}
+
+
+///   ----- if r < 1e7 and n > 1e7 -----
+ll combinatory2(ll n,ll r){
+    ll ret = 1; r = min(r, n-r);
+    for(int i = 0 ; i < r ; i ++) ret = (ret*n--)%MOD;
+    return (ret*invers_mod(factorial[r]))%MOD;
+}
+
+

@@ -39,6 +39,10 @@
         "streambuf": "cpp",
         "valarray": "cpp",
         "_other": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }

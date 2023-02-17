@@ -19,7 +19,7 @@ bool ok(ll m,ll x){
 ll binary_search(ll l,ll r,ll x){
     ll ans=-1, m;
     while (l<=r){
-        m = (l + r) / 2;
+        m = l + (r-l)/2;
         if(ok(m,x)){
             r = m - 1;
             /// ----- To Get First (True) ----- ///

@@ -50,7 +50,7 @@ typedef long double     ld;
 
 const ll INF = 9223372036854775807;
 const int OO = 2147483647;
-const ll MOD = 1e9 + 7;
+const ll MOD = 998244353;
 const ld EPS = 1e-9;
 const ld PI  = 3.141592653589793238;
 
@@ -65,7 +65,10 @@ const int N = 3e5 + 5e3;
 
 ll n, a[N];
 
+
 // --------------------------------------
+
+
 
 // --------------------------------------
 
@@ -75,7 +78,7 @@ void doTest(){
         cin>>a[i];
     }
 
-    
+
 }
 
 
@@ -86,11 +89,10 @@ int main(){
     FastIO
     cout<<fixed<<setprecision(15);
 
-
-
-    // scanf("%d",&tc);
+    // scanf("%d", &tc);
     cin>>tc;
     while(tc--) doTest();
 }
+
 
 // -----------------------------------------------------------------
