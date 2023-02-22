@@ -2,6 +2,7 @@
 C++ - GNU17
 
 This is my Repo for Competitive Programming Codes.
+
 here I push my implementations and templates to use it when needed.
 
 Feel free to use the code My Freind ^_^ .
