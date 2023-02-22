@@ -30,7 +30,7 @@ class FenTreePURQ{
 		
 		void update(int i, ll d){ i++; for(;i<data.size();i+=(i&(-i))) data[i] += d; }
         
-        // find first idx : k < pre[idx]
+        // find first idx : k <= pre[idx]
 		int lower_bound_on_pre(int k){
 			int p = 1 ,i = 0;
 			while(p*2 < data.size()) p *= 2;
