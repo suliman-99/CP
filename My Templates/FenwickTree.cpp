@@ -49,7 +49,7 @@ class FenTreeRUPQ{
 		FenTreePURQ purq;
 
 	public:
-		FenTreeRUPQ(int sz) : purq(FenTreePURQ(sz)) { cpy.assign(sz, 0); }
+		FenTreeRUPQ(int sz) : purq(FenTreePURQ(sz+1)) { cpy.assign(sz, 0); }
 
 		void build(ll a[]){ for(int i = 0 ; i < cpy.size() ; i ++) cpy[i] = a[i]; }
 		
@@ -65,17 +65,17 @@ class FenTreeRURQ{
 		FenTreeRUPQ rupq;
 		
 	public:
-		FenTreeRURQ(int sz) :purq(FenTreePURQ(sz)), rupq(FenTreeRUPQ(sz)) { pre.assign(sz+1, 0); }
+		FenTreeRURQ(int sz) :purq(FenTreePURQ(sz+1)), rupq(FenTreeRUPQ(sz)) { pre.assign(sz+1, 0); }
 		
 		void build(ll a[]){ for(int i = 1 ; i < pre.size() ; i ++) pre[i] = pre[i-1] + a[i-1]; }
 
 		void update(int i ,int j ,ll d){
 			rupq.update(i, j, d);
-			purq.update(i, +d*i);
-			purq.update(j+1, -d*(j+1));
+			purq.update(i, -d*i);
+			purq.update(j+1, +d*(j+1));
 		}
 		
-		ll get(int i){ return pre[i+1] + rupq.get(i)*(i+1) - purq.get(i); }
+		ll get(int i){ return pre[i+1] + rupq.get(i)*(i+1) + purq.get(i); }
 		
 		ll get(int i, int j){ return get(j) - get(i - 1); }
 };
