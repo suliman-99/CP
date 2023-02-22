@@ -9,7 +9,7 @@ typedef vector<vi>        mi;
 const int BIGGEST_FACTOR = 1e7 + 5;
 mi factors;
 
-void calc_facors(){
+void calc_factors(){
     factors.clear();
     factors.resize(BIGGEST_FACTOR+1);
     for(int i = 1 ; i <= BIGGEST_FACTOR ; i ++){

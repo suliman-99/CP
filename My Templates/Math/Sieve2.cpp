@@ -62,7 +62,7 @@ vii prime_factors(ll x){
             x /= small_prim;
             cnt ++;
         }
-        factors.push_back({small_prim,cnt});
+        factors.push_back({small_prim, cnt});
     } 
     return factors;
 }

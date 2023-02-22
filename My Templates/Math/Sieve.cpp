@@ -65,10 +65,10 @@ vii prime_factors(ll n){
                 n /= pr;
                 cnt ++;
             }
-            factors.push_back({pr,cnt});
+            factors.push_back({pr, cnt});
         }
         pr = primes[++idx];
     } 
-    if( n != 1 ) factors.push_back({n,1});
+    if( n != 1 ) factors.push_back({n, 1});
     return factors;
 }
