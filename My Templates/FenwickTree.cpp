@@ -11,7 +11,7 @@ class FenTreePURQ{
 		vll data;
 
 	public:
-		FenTreePURQ(int sz){ data.assign(sz+1, 0); }
+		void resize(int sz){ data.assign(sz+1, 0); }
          
         void build(ll a[]){
             for(int i = 1 ; i < data.size() ; i ++){
@@ -49,7 +49,7 @@ class FenTreeRUPQ{
 		FenTreePURQ purq;
 
 	public:
-		FenTreeRUPQ(int sz) : purq(FenTreePURQ(sz+1)) { cpy.assign(sz, 0); }
+		void resize(int sz){ purq.resize(sz+1); cpy.assign(sz, 0); }
 
 		void build(ll a[]){ for(int i = 0 ; i < cpy.size() ; i ++) cpy[i] = a[i]; }
 		
@@ -65,7 +65,7 @@ class FenTreeRURQ{
 		FenTreeRUPQ rupq;
 		
 	public:
-		FenTreeRURQ(int sz) :purq(FenTreePURQ(sz+1)), rupq(FenTreeRUPQ(sz)) { pre.assign(sz+1, 0); }
+		void resize(int sz){ purq.resize(sz+1); rupq.resize(sz); pre.assign(sz+1, 0); }
 		
 		void build(ll a[]){ for(int i = 1 ; i < pre.size() ; i ++) pre[i] = pre[i-1] + a[i-1]; }
 
