@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 typedef long long       ll;
 typedef vector< ll >    vll;
 
+// -----------------------------------------------------------------
 
 class FenTreePURQ{
 	private:

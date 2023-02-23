@@ -21,6 +21,8 @@ bool compareInterval(Interval i1, Interval i2){
 int main(){
     int n = 10;
     int a[n];
+    
+    memset(a, -1, sizeof(a));
 
     /// inc order
     sort(a, a + n);
