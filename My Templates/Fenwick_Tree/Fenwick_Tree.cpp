@@ -6,6 +6,7 @@ typedef vector< ll >    vll;
 
 // -----------------------------------------------------------------
 
+// build in O(n) - get in O(logn) - update in O(logn)
 class FenTreePURQ{
 	private:
 		vll data;
