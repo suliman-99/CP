@@ -9,11 +9,13 @@ const ll INF = 9223372036854775807;
 #define LX (i<<1)
 #define RX (i<<1) | 1
 
+// build in O(n) - get in O(logn) - update in O(logn)
 class SegTree {
     private:
         vector<ll> seg;
         int seg_str, seg_end;
 
+        // sum, mul, xor, ... || min, max, or, and, gcd, ...
         ll skip_val = -INF;
         ll conquer(ll a1, ll a2){ return max(a1, a2); }
 

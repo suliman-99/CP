@@ -8,12 +8,14 @@ typedef long long ll;
 #define LX (i<<1)
 #define RX (i<<1) | 1
 
+// build in O(n) - get in O(logn) - update in O(logn)
 class SegTreeIdx {
     private:
         vector<int> seg;
         int seg_str, seg_end;
         ll* arr;
 
+        // min, max, ...
         int conquer(int idx1, int idx2){
             if(idx1 == -1) return idx2;
             if(idx2 == -1) return idx1;

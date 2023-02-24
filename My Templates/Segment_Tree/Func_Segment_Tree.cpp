@@ -7,9 +7,15 @@ ll n;
 
 // -----------------------------------------------------------------
 
+// ----------------------------------------------------||
+// build in O(n) - get in O(logn) - update in O(logn)  ||
+// ----------------------------------------------------||
+
+
 #define LX (i<<1)
 #define RX (i<<1)|1
  
+// sum, mul, xor, ... || min, max, or, and, gcd, ...
 ll skip_val = -INF;
 ll seg_conquer(ll a1, ll a2){ return max(a1, a2); }
 
