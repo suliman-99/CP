@@ -16,8 +16,12 @@ ll n;
 #define RX (i<<1)|1
  
 // sum, mul, xor, ... || min, max, or, and, gcd, ...
-ll skip_val = -INF;
+ll seg_skip_val = -INF;
 ll seg_conquer(ll a1, ll a2){ return max(a1, a2); }
+void seg_update_method(ll &a, ll val){
+    a = val;   // assign
+    // a += val;   // increase
+}
 
 void seg_build(ll seg[], ll a[], int i = 1, int l = 0, int r = n-1){
     if(l == r){
@@ -33,7 +37,7 @@ void seg_build(ll seg[], ll a[], int i = 1, int l = 0, int r = n-1){
 
 void seg_update(int idx, ll val, ll seg[], int i = 1, int l = 0, int r = n-1){
     if(l == r){
-        seg[i] = val;
+        seg_update_method(seg[i], val);
         return;
     }
     int m = (l + r)/2;
@@ -41,9 +45,9 @@ void seg_update(int idx, ll val, ll seg[], int i = 1, int l = 0, int r = n-1){
     else seg_update(idx, val, seg, RX, m+1, r);
     seg[i] = seg_conquer(seg[LX], seg[RX]);
 }
- 
+
 ll seg_get(int from, int to, ll seg[], int i = 1, int l = 0, int r = n-1){
-    if(from > to) return skip_val;
+    if(to < from) return seg_skip_val;
     if(from == l && to == r) return seg[i];
     int m = (l + r)/2;
     return seg_conquer(seg_get(from, min(to, m), seg, LX, l, m), seg_get(max(from, m+1), to, seg, RX, m+1, r));
