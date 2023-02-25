@@ -10,14 +10,18 @@ const ll INF = 9223372036854775807;
 #define RX (i<<1) | 1
 
 // build in O(n) - get in O(logn) - update in O(logn)
-class SegTree {
+class SegTree{
     private:
         vector<ll> seg;
         int seg_str, seg_end;
 
         // sum, mul, xor, ... || min, max, or, and, gcd, ...
         ll skip_val = -INF;
-        ll conquer(ll a1, ll a2){ return max(a1, a2); }
+        ll _conquer(ll a1, ll a2){ return max(a1, a2); }
+        void _update_method(ll &a, ll val){
+            a = val;   // assign
+            // a += val;   // increase
+        }
 
         void _build(int i, int l, int r, ll a[]){
             if(l == r){
@@ -27,25 +31,25 @@ class SegTree {
             int m = (l + r)/2;
             _build(LX, l, m, a);
             _build(RX, m+1, r, a);
-            seg[i] = conquer(seg[LX], seg[RX]);
+            seg[i] = _conquer(seg[LX], seg[RX]);
         }
         
         void _update(int idx, ll val, int i, int l, int r){
             if(l == r){
-                seg[i] = val;
+                _update_method(seg[i], val);
                 return;
             }
             int m = (l + r)/2;
             if(idx <= m) _update(idx, val, LX, l, m);
             else _update(idx, val, RX, m+1, r);
-            seg[i] = conquer(seg[LX], seg[RX]);
+            seg[i] = _conquer(seg[LX], seg[RX]);
         }
         
         ll _get(int from, int to, int i, int l, int r){
-            if(from > to) return skip_val;
+            if(to < from) return skip_val;
             if(from == l && to == r) return seg[i];
             int m = (l + r)/2;
-            return conquer(_get(from, min(to,m), LX, l, m), _get(max(from,m+1), to, RX, m+1, r));
+            return _conquer(_get(from, min(to,m), LX, l, m), _get(max(from,m+1), to, RX, m+1, r));
         }
  
     public:
