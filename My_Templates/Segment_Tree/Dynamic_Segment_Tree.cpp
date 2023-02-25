@@ -26,7 +26,7 @@ class DySegTree{
             // a += val;   // increase
         }
 
-        void _build(Node *& cur, int l, int r, ll a[]){
+        void _build(Node *&cur, int l, int r, ll a[]){
             if(!cur){ cur = new Node(); }
             if(l == r){
                 cur->data = a[l];
