@@ -1,6 +1,4 @@
-# Competitive Programming
-C++ - GNU17
-
+# Competitive Programming - C++ - GNU17
 This is my Repo for Competitive Programming Codes.
 
 here I push my implementations and templates to use it when needed.
