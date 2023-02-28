@@ -48,11 +48,16 @@ class FenTreeRUPQ{
 	private:
 		vll cpy;
 		FenTreePURQ purq;
+		int sz;
 
 	public:
-		void resize(int sz){ purq.resize(sz+1); cpy.assign(sz, 0); }
+		void resize(int sz){ purq.resize(sz+1); this->sz = sz; }
 
-		void build(ll arr[]){ for(int i = 0 ; i < cpy.size() ; i ++) cpy[i] = arr[i]; }
+		void build(ll arr[]){ 
+			cpy.assign(sz, 0); 
+			for(int i = 0 ; i < cpy.size() ; i ++) 
+				cpy[i] = arr[i]; 
+		}
 		
 		void update(int i, int j, ll d){ purq.update(i, +d); purq.update(j+1, -d); }
 		
@@ -64,11 +69,16 @@ class FenTreeRURQ{
 		vll pre;
 		FenTreePURQ purq;
 		FenTreeRUPQ rupq;
+		int sz;
 		
 	public:
-		void resize(int sz){ purq.resize(sz+1); rupq.resize(sz); pre.assign(sz+1, 0); }
+		void resize(int sz){ purq.resize(sz+1); rupq.resize(sz); this->sz = sz; }
 		
-		void build(ll arr[]){ for(int i = 1 ; i < pre.size() ; i ++) pre[i] = pre[i-1] + arr[i-1]; }
+		void build(ll arr[]){
+			pre.assign(sz+1, 0);
+			for(int i = 1 ; i < pre.size() ; i ++) 
+				pre[i] = pre[i-1] + arr[i-1]; 
+		}
 
 		void update(int i ,int j ,ll d){
 			rupq.update(i, j, d);
