@@ -13,7 +13,7 @@ int log2_floor(ull i){ return i ? __builtin_clzll(1) - __builtin_clzll(i) : -1; 
 // build in O(nlogn) - get in O(1) - no update
 class SparseTableIdx{
 	private:
-		mi data;
+		mi st;
         ll* arr;
 
         // min, max, ...
@@ -24,21 +24,21 @@ class SparseTableIdx{
 		}
 
 		void _build(){
-			for(int i = 0 ; i < data[0].size() ; i++) data[0][i] = i;
-			for(int j = 1 ; j < data.size() ; j++)
-				for(int i = 0 ; i < data[j].size() ; i++)
-					data[j][i] = _conquer(data[j-1][i], data[j-1][i+(1<<(j-1))]);
+			for(int i = 0 ; i < st[0].size() ; i++) st[0][i] = i;
+			for(int j = 1 ; j < st.size() ; j++)
+				for(int i = 0 ; i < st[j].size() ; i++)
+					st[j][i] = _conquer(st[j-1][i], st[j-1][i+(1<<(j-1))]);
 		}
 		
 	public:
-		SparseTableIdx(int sz, ll a[]){
-            data.assign(log2_floor(sz)+1, vi(sz));
-            arr = a;
+		SparseTableIdx(int sz, ll arr[]){
+            st.assign(log2_floor(sz)+1, vi(sz));
+            this->arr = arr;
 			_build();
 		}
 		
 		int get(int i ,int j){
 			int k = log2_floor(j-i+1);
-			return _conquer(data[k][i], data[k][j-(1<<k)+1]);
+			return _conquer(st[k][i], st[k][j-(1<<k)+1]);
 		}
 };

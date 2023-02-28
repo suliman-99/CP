@@ -26,9 +26,9 @@ class SparseTable{
 		}
 		
 	public:
-		SparseTable(int sz, ll a[]){
+		SparseTable(int sz, ll arr[]){
             data.assign(log2_floor(sz)+1, vll(sz));
-			_build(a);
+			_build(arr);
 		}
 		
 		ll get(int i ,int j){
