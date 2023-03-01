@@ -19,8 +19,8 @@ bool compareInterval(Interval i1, Interval i2){
 
 
 int main(){
-    int n = 10;
-    int a[n];
+    ll n = 10;
+    ll a[n];
     
     memset(a, -1, sizeof(a));
 
@@ -66,6 +66,11 @@ int main(){
     fgets(char_list, char_list_len, stdin);
     
     str = char_list;
+
+    // if str is integer (ll) then assing the value to a
+    if(str.find_first_not_of( "0123456789+-" ) == string::npos){
+        n = stoll(str);
+    }
 
 }
 
