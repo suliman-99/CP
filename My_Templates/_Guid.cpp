@@ -47,14 +47,25 @@ int main(){
     }while(next_permutation(a,a+n));
 
     string str;
+    int char_list_len = 10;
+    char char_list[char_list_len];
+    
+
+    /// to read a word into string 
+    cin>>str;
+
     /// to read a Line into string 
     getline(cin, str);
 
-    int char_list_len = 10;
-    char char_list[char_list_len];
+    /// to read a word into char list 
+    cin>>char_list;
+    scanf("%s", char_list);
 
     /// to read a Line into char list 
     cin.getline(char_list, char_list_len);
+    fgets(char_list, char_list_len, stdin);
+    
+    str = char_list;
 
 }
 
