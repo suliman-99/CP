@@ -23,14 +23,14 @@ void seg_update_method(ll &a, ll val){
     // a += val;   // increase
 }
 
-void seg_build(ll seg[], ll a[], int i = 1, int l = 0, int r = n-1){
+void seg_build(ll seg[], ll arr[], int i = 1, int l = 0, int r = n-1){
     if(l == r){
-        seg[i] = a[l];
+        seg[i] = arr[l];
         return;
     }
     int m = (l + r)/2;
-    seg_build(seg, a, LX, l, m);
-    seg_build(seg, a, RX, m+1, r);
+    seg_build(seg, arr, LX, l, m);
+    seg_build(seg, arr, RX, m+1, r);
     seg[i] = seg_conquer(seg[LX], seg[RX]);
 }
  

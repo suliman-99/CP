@@ -59,10 +59,10 @@ class SegTreeIdx{
  
 
     public:
-        SegTreeIdx(int str, int end, ll a[]){
+        SegTreeIdx(int str, int end, ll arr[]){
             seg_str = str;
             seg_end = end;
-            arr = a;
+            this->arr = arr;
             seg.assign(4*(seg_end-seg_str+1), 0);
             _build(1, seg_str, seg_end);
         }

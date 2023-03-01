@@ -23,14 +23,14 @@ class SegTree{
             // a += val;   // increase
         }
 
-        void _build(int i, int l, int r, ll a[]){
+        void _build(int i, int l, int r, ll arr[]){
             if(l == r){
-                seg[i] = a[l];
+                seg[i] = arr[l];
                 return;
             }
             int m = (l + r)/2;
-            _build(LX, l, m, a);
-            _build(RX, m+1, r, a);
+            _build(LX, l, m, arr);
+            _build(RX, m+1, r, arr);
             seg[i] = _conquer(seg[LX], seg[RX]);
         }
         
@@ -59,8 +59,8 @@ class SegTree{
             seg.assign(4*(seg_end-seg_str+1), 0);
         }
 
-        void build(ll a[]){
-            _build(1, seg_str, seg_end, a);
+        void build(ll arr[]){
+            _build(1, seg_str, seg_end, arr);
         }
         
         void update(int idx, ll val){
