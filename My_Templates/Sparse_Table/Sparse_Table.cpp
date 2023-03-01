@@ -17,18 +17,14 @@ class SparseTable{
 
         // min, max, or, and, gcd, ...
         ll _conquer(ll a1, ll a2){ return min(a1, a2); }
-
-		void _build(ll arr[]){
+		
+	public:
+		void build(int sz, ll arr[]){
+            st.assign(log2_floor(sz)+1, vll(sz));
 			for(int i = 0 ; i < st[0].size() ; i++) st[0][i] = arr[i];
 			for(int j = 1 ; j < st.size() ; j++)
 				for(int i = 0 ; i < st[j].size() ; i++)
 					st[j][i] = _conquer(st[j-1][i], st[j-1][i+(1<<(j-1))]);
-		}
-		
-	public:
-		SparseTable(int sz, ll arr[]){
-            st.assign(log2_floor(sz)+1, vll(sz));
-			_build(arr);
 		}
 		
 		ll get(int i ,int j){

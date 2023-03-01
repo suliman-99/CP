@@ -22,19 +22,15 @@ class SparseTableIdx{
 			// if(arr[idx1] > arr[idx2]) return idx1; // max
 			else return idx2;	
 		}
-
-		void _build(){
+		
+	public:
+		void build(int sz, ll arr[]){
+            st.assign(log2_floor(sz)+1, vi(sz));
+            this->arr = arr;
 			for(int i = 0 ; i < st[0].size() ; i++) st[0][i] = i;
 			for(int j = 1 ; j < st.size() ; j++)
 				for(int i = 0 ; i < st[j].size() ; i++)
 					st[j][i] = _conquer(st[j-1][i], st[j-1][i+(1<<(j-1))]);
-		}
-		
-	public:
-		SparseTableIdx(int sz, ll arr[]){
-            st.assign(log2_floor(sz)+1, vi(sz));
-            this->arr = arr;
-			_build();
 		}
 		
 		int get(int i ,int j){
