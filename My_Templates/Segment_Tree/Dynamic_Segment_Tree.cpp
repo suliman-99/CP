@@ -16,7 +16,7 @@ struct Node{
 class DySegTree{
     private:
         Node *root;
-        int seg_str, seg_end;
+        ll seg_str, seg_end;
 
         // sum, mul, xor, ... || min, max, or, and, gcd, ...
         ll skip_val = -INF;
@@ -26,25 +26,25 @@ class DySegTree{
             // a += val;   // increase
         }
 
-        void _build(Node *&cur, int l, int r, ll a[]){
+        void _build(Node *&cur, ll l, ll r, ll arr[]){
             if(!cur){ cur = new Node(); }
             if(l == r){
-                cur->data = a[l];
+                cur->data = arr[l];
                 return;
             }
-            int m = (l + r)/2;
-            _build(cur->left, l, m, a);
-            _build(cur->right, m+1, r, a);
+            ll m = l/2 + r/2 + (l%2 & r%2);
+            _build(cur->left, l, m, arr);
+            _build(cur->right, m+1, r, arr);
             cur->data =_conquer(cur->left->data, cur->right->data);
         }
         
-        void _update(int idx, ll val, Node *&cur, int l, int r){
+        void _update(ll idx, ll val, Node *&cur, ll l, ll r){
             if(!cur){ cur = new Node(); }
             if(l == r){
                 _update_method(cur->data, val);
                 return;
             }
-            int m = (l + r)/2;
+            ll m = l/2 + r/2 + (l%2 & r%2);
             if(idx <= m) _update(idx, val, cur->left, l, m);
             else _update(idx, val, cur->right, m+1, r);
             cur->data = skip_val;
@@ -52,28 +52,28 @@ class DySegTree{
             if(cur->right) cur->data = _conquer(cur->data, cur->right->data);
         }
 
-        ll _get(int from, int to, Node *cur, int l, int r){
+        ll _get(ll from, ll to, Node *cur, ll l, ll r){
             if(!cur || to < from) return skip_val;
             if(from == l && to == r) return cur->data;
-            int m = (l + r)/2;
+            ll m = l/2 + r/2 + (l%2 & r%2);
             return _conquer(_get(from, min(to,m), cur->left, l, m), _get(max(from,m+1), to, cur->right, m+1, r));
         }
  
     public:
-        void resize(int str, int end){
+        void resize(ll str, ll end){
             seg_str = str;
             seg_end = end;
         }
 
-        void build(ll a[]){
-            _build(root, seg_str, seg_end, a);
+        void build(ll arr[]){
+            _build(root, seg_str, seg_end, arr);
         }
         
-        void update(int idx, ll val){
+        void update(ll idx, ll val){
             _update(idx, val, root, seg_str, seg_end);
         }
         
-        ll get(int from, int to){
+        ll get(ll from, ll to){
             return _get(from, to, root, seg_str, seg_end);
         }
 };
