@@ -14,7 +14,7 @@ struct Node{
 };
 
 // build in O(n) - get in O(logn) - update in O(logn)
-class DySegTree{
+class DyLazySegTree{
     private:
         Node *root;
         ll seg_str, seg_end;
