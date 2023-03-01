@@ -2,6 +2,7 @@
 using namespace std;
 
 typedef pair<int, int> ii;
+typedef long long ll;
 typedef vector< int >   vi;
 long double PI  = 3.141592653589793238;
 
