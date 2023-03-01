@@ -9,7 +9,7 @@ const ll INF = 9223372036854775807;
 struct Node{
   ll data;
   Node *left ,*right;
-  Node(): data(0) ,left(nullptr) ,right(nullptr) {}
+  Node(): data(0), left(nullptr), right(nullptr) {}
 };
 
 // build in O(n) - get in O(logn) - update in O(logn)
@@ -35,7 +35,7 @@ class DySegTree{
             ll m = l/2 + r/2 + (l%2 & r%2);
             _build(cur->left, l, m, arr);
             _build(cur->right, m+1, r, arr);
-            cur->data =_conquer(cur->left->data, cur->right->data);
+            cur->data = _conquer(cur->left->data, cur->right->data);
         }
         
         void _update(ll idx, ll val, Node *&cur, ll l, ll r){
@@ -47,9 +47,7 @@ class DySegTree{
             ll m = l/2 + r/2 + (l%2 & r%2);
             if(idx <= m) _update(idx, val, cur->left, l, m);
             else _update(idx, val, cur->right, m+1, r);
-            cur->data = skip_val;
-            if(cur->left) cur->data = _conquer(cur->data, cur->left->data);
-            if(cur->right) cur->data = _conquer(cur->data, cur->right->data);
+            cur->data = _conquer(cur->left->data, cur->right->data);
         }
 
         ll _get(ll from, ll to, Node *cur, ll l, ll r){
