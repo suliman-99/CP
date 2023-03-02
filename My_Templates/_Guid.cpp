@@ -91,6 +91,28 @@ int main(){
 |    bool     ->    Use inteer then cast       -      |
 \*****************************************************/
 
+// -------------------------------------------------------
+
+// Read multi line with multi value in every line 
+// Unknown lines number & Unknown values number in every line
+
+// ll n, m[100], a[100][100];
+// char c;
+// bool read;
+
+// void doTest(){
+//     read = true;
+//     while(read){
+//         while(read = (scanf("%d%c", &a[n][m[n]++], &c) == 2))
+//             if(c == '\n') break;
+//         n++;
+//     } n--; m[n]--;
+//     for(int i = 0 ; i < n ; i ++){
+//         for(int j = 0 ; j < m[i] ; j ++){
+//             cout<<a[i][j]<<" ";
+//         } cout<<endl;
+//     }
+// }
 
 
 
