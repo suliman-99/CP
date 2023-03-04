@@ -6,6 +6,8 @@ typedef long long ll;
 typedef vector< int >   vi;
 long double PI  = 3.141592653589793238;
 
+const int TOW = 0b10;
+const int FIFTEEN = 0xf;
 
 struct Interval {
     int start, end;
