@@ -16,9 +16,9 @@ class SegTree{
         int seg_str, seg_end;
 
         // sum, mul, xor, ... || min, max, or, and, gcd, ...
-        ll skip_val = -INF;
-        ll _conquer(ll a1, ll a2){ return max(a1, a2); }
-        void _update_method(ll &a, ll val){
+        static const ll skip_val = -INF;
+        static ll _conquer(ll a1, ll a2){ return max(a1, a2); }
+        static void _update_method(ll &a, ll val){
             a = val;   // assign
             // a += val;   // increase
         }

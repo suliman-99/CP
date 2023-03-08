@@ -12,8 +12,8 @@ typedef long long ll;
 class SegTreeIdx{
     private:
         vector<int> seg;
+        vector<ll> arr;
         int seg_str, seg_end;
-        ll* arr;
 
         // min, max, ...
         int _conquer(int idx1, int idx2){
@@ -23,7 +23,7 @@ class SegTreeIdx{
             // if(arr[idx1] < arr[idx2]) return idx1;   // for min
             else return idx2;
         }
-        void _update_method(ll &a, ll val){
+        static void _update_method(ll &a, ll val){
             a = val;   // assign
             // a += val;   // increase
         }
@@ -59,11 +59,15 @@ class SegTreeIdx{
  
 
     public:
-        SegTreeIdx(int str, int end, ll arr[]){
+        void resize(int str, int end){
             seg_str = str;
             seg_end = end;
-            this->arr = arr;
             seg.assign(4*(seg_end-seg_str+1), 0);
+            arr.assign(seg_end-seg_str+1, 0);
+        }
+
+        void build(ll arr[]){
+            for(int i = seg_str ; i <= seg_end ; i ++) this->arr[i-seg_str] = arr[i];
             _build(1, seg_str, seg_end);
         }
         
