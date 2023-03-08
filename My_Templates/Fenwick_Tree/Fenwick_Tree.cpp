@@ -61,7 +61,7 @@ class FenTreeRUPQ{
 		
 		void update(int i, int j, ll d){ purq.update(i, +d); purq.update(j+1, -d); }
 		
-		ll get(int i){ return cpy[i] + purq.get(i); }
+		ll get(int i){ return purq.get(i) + ((i < cpy.size()) ? cpy[i] : 0); }
 };
 
 class FenTreeRURQ{
@@ -86,7 +86,7 @@ class FenTreeRURQ{
 			purq.update(j+1, +d*(j+1));
 		}
 		
-		ll get(int i){ return pre[i+1] + rupq.get(i)*(i+1) + purq.get(i); }
+		ll get(int i){ return rupq.get(i)*(i+1) + purq.get(i) + ((i+1 < pre.size()) ? pre[i+1] : 0); }
 		
 		ll get(int i, int j){ return get(j) - get(i - 1); }
 };
