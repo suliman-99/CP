@@ -1,3 +1,5 @@
+File Structure Coordinating
+--------------------------------
 Lazy propagate opt
 Persestant Segment Tree
 Persestant Lazy Segment Tree
@@ -9,5 +11,4 @@ Inclusion Exclusion
 KMP apps
 Hash
 DSU & LCA
-Trie
 Ternary Search
