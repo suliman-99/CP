@@ -15,7 +15,6 @@ void test(){
 #define FastIO        cin.tie(0);cout.tie(0);ios::sync_with_stdio(0);
 #define dbg(x)        cout<<#x<<" = "<<x<<endl;
 #define SQ(a)         (a)*(a)
-#define PB            push_back
 #define S             second
 #define F             first
 
@@ -47,9 +46,9 @@ typedef long double     ld;
 
 // --------------------------------------
 
-const ll INF = 9223372036854775807;
-const int OO = 2147483647;
-const ll MOD = 998244353;
+const ll INF = 4e18;     // 9223372036854775807;
+const int OO = 1e9;      // 2147483647;
+const ll MOD = 1e9 + 7;  // 998244353;
 const ld EPS = 1e-9;
 const ld PI  = 3.141592653589793238;
 
