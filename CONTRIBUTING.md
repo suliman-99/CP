@@ -6,11 +6,11 @@
 <!-- 
     Do a search and replace with your text editor for the following: 
         `sulimanawadstudy@gmail.com`,
-        `CP`,
+        `Competitive Programming Templates`,
 -->
-# Contributing to CP
+# Contributing to Competitive Programming Templates
 
-Thank you for your interest in contributing to CP We welcome contributions from anyone, regardless of their level of experience or expertise.
+Thank you for your interest in contributing to Competitive Programming Templates We welcome contributions from anyone, regardless of their level of experience or expertise.
 
 ## Getting Started
 
@@ -37,7 +37,7 @@ We expect all contributors to adhere to our code of conduct, which can be found 
 
 ## Contact
 
-If you have any questions or concerns about contributing to CP, please contact us at sulimanawadstudy@gmail.com. Thank you for your contributions!
+If you have any questions or concerns about contributing to Competitive Programming Templates, please contact us at sulimanawadstudy@gmail.com. Thank you for your contributions!
 
 
 
