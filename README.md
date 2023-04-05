@@ -158,9 +158,9 @@ For more, check out the [License File][license-url].
 [forks-url]: https://github.com/suliman-99/cp/network/members
 [stars-url]: https://github.com/suliman-99/cp/stargazers
 [issues-url]: https://github.com/suliman-99/cp/issues
-[license-url]: https://github.com/suliman-99/cp/blob/main/LICENSE
-[contributing-url]: https://github.com/suliman-99/cp/blob/main/CONTRIBUTING.md
-[photo-url]: https://github.com/suliman-99/cp/blob/main/photo.png
+[license-url]: ./LICENSE
+[contributing-url]: ./CONTRIBUTING.md
+[photo-url]: ./photo.png
 [demo-url]: https://github.com/suliman-99/cp
 
 

@@ -41,4 +41,4 @@ If you have any questions or concerns about contributing to Competitive Programm
 
 
 
-[code-of-conduct-url]: https://github.com/suliman-99/open-source-projects-template/blob/main/CODE_OF_CONDUCT.md
+[code-of-conduct-url]: ./CODE_OF_CONDUCT.md
