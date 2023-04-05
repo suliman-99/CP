@@ -1,4 +1,10 @@
-<!-- Written By Suliman Awad -->
+<!-- 
+    Written By Suliman Awad
+    Email: sulimanawadstudy@gmail.com
+    Github: https://github.com/suliman-99
+    Linkedin: https://linkedin.com/in/suliman-awad-399a471b8
+    Facebook: https://www.facebook.com/suliman.awad.507
+ -->
 <!-- 
     Do a search and replace with your text editor for the following: 
         `email`,
