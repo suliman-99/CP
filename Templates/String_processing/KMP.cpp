@@ -59,3 +59,4 @@ vi kmp_pre_occ(string s, string text){
     res[0] = -1;
     return res;
 }
+
