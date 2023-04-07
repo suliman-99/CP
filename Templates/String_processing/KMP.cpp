@@ -5,11 +5,12 @@ typedef vector<int>       vi;
 
 // -----------------------------------------------------------------
 
+// return the table wich will be used to search by kmp algorithm
+// table[i] is the maximum length : s.substr(0, length) == s.substr(i-length+1, i)
 vi kmp_table(string s){
-    int m = s.size();
-    vi table(m);
+    vi table(s.size());
     int j = 0;
-    for(int i = 1 ; i < m ; i ++){
+    for(int i = 1 ; i < s.size() ; i ++){
         while(j > 0 && s[i] != s[j]) j = table[j-1];
         if(s[i] == s[j]) j++;
         table[i] = j;
@@ -17,18 +18,44 @@ vi kmp_table(string s){
     return table;
 }
 
-vi kmp_search(string text, string s){
-    int m = s.size(), n = text.size();
+// return the start indices of s occurrences in text
+vi kmp_search(string s, string text){
     vi table = kmp_table(s);
     vi res;
     int j = 0;
-    for(int i = 0 ; i < n ; i ++){
+    for(int i = 0 ; i < text.size() ; i ++){
         while(j > 0 && text[i] != s[j]) j = table[j-1];
         if(text[i] == s[j]) j++;
-        if(j == m){
-            res.push_back(i-m+1);
+        if(j == s.size()){
+            res.push_back(i-s.size()+1);
             j = table[j-1];
         }
     }
+    return res;
+}
+
+// return the number of s prefexes occurrences in s
+// v[i] = number of occurrences of s.substr(0, i-1) in s
+// v[0] is useless value
+vi kmp_pre_occ(string s){
+    vi table = kmp_table(s);
+    vi res(s.size()+1);
+    for(int i = 0 ; i < s.size() ; i ++) res[table[i]]++;
+    for(int i = res.size()-1 ; i > 0 ; i --) res[table[i-1]] += res[i];
+    for(int i = 1 ; i < res.size() ; i ++) res[i]++; 
+    res[0] = -1;
+    return res;
+}
+
+// return the number of s prefexes occurrences in text
+// v[i] = number of occurrences of s.substr(0, i-1) in text
+// v[0] is useless value
+vi kmp_pre_occ(string s, string text){
+    string str = s + '#' + text;
+    vi table = kmp_table(str);
+    vi res(s.size()+1);
+    for(int i = 0 ; i < text.size() ; i ++) res[table[s.size()+1+i]]++;
+    for(int i = res.size()-1 ; i > 0 ; i --) res[table[i-1]] += res[i];
+    res[0] = -1;
     return res;
 }
