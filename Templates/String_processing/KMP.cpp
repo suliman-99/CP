@@ -60,3 +60,12 @@ vi kmp_pre_occ(string s, string text){
     return res;
 }
 
+// return the minimum length l : s.substr(0, l-1)*k = s : k is any int
+// in the wrost case: l = s.size()
+int kmp_min_div_compress(string s){
+    vi table = kmp_table(s);
+    int l = s.size() - table[s.size()-1];
+    if(s.size()%l) l = s.size();
+    return l;
+}
+
