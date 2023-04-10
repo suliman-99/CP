@@ -35,7 +35,19 @@ vi kmp_search(string &s, string &text){
     return res;
 }
 
-// return the number of s prefexes occurrences in s
+// return all lengths l where prefix of length l == suffix of length l
+// prefix of length l = s.substr(0, l-1)
+// suffix of length l = s.substr(s.size()-l, s.size()-1)
+// length l = s.size() is always exist
+vi kmp_pre_suf_lens(string &s){
+    vi table = kmp_table(s);
+    vi res;
+    for(int j = s.size() ; j > 0 ; j = table[j-1])
+        res.push_back(j);
+    return res;
+}
+
+// return the number of s prefixes occurrences in s
 // v[i] = number of occurrences of s.substr(0, i-1) in s
 // v[0] is useless value
 vi kmp_pre_occ(string &s){
@@ -48,7 +60,7 @@ vi kmp_pre_occ(string &s){
     return res;
 }
 
-// return the number of s prefexes occurrences in text
+// return the number of s prefixes occurrences in text
 // v[i] = number of occurrences of s.substr(0, i-1) in text
 // v[0] is useless value
 vi kmp_pre_occ(string &s, string &text){
