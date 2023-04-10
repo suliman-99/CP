@@ -94,3 +94,23 @@ vi kmp_nxt_search(string &s, string &text){
     return res;
 }
 
+// this is just an example of dp with kmp
+int kmp_dp(string &s, string &t){
+    mi nxt = kmp_precalculate_nxt(s);
+    mi memo = mi(t.size()+1, vi(s.size()+1));
+    memo[t.size()][s.size()] = 1;
+    for(int i = t.size()-1 ; i >= 0 ; i --){
+        for(int j = 0 ; j <= s.size() ; j ++){
+            // The dp logic is here
+            // you just need to calculate the str & end values
+            char str = t[i], end = t[i];
+            if(t[i] == '?') str = 'a', end = 'z';
+            for(char c = str ; c <= end ; c ++)
+                memo[i][j] = max(memo[i][j], memo[i+1][nxt[j][c-'a']]);
+            // --------------------------------------
+        }
+        memo[i][s.size()]++;
+    }
+    return memo[0][0];
+}
+
