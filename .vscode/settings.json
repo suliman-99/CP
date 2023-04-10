@@ -45,6 +45,9 @@
         "ranges": "cpp",
         "span": "cpp",
         "variant": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "forward_list": "cpp"
     }
 }
