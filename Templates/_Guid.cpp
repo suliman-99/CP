@@ -75,6 +75,17 @@ int main(){
         n = stoll(str);
     }
 
+
+    int n; cin>>n; vi st = vi(n);
+    // By these two lines st will have unique values
+    sort(st.begin(), st.end());
+    st.erase(unique(st.begin(), st.end()), st.end());
+    //---------------------------------------------------
+    
+    // this line will put the unique values in the first of the array
+    // but the size will stay as it is and the rest of the array will be stubid data
+    unique(st.begin(), st.end());
+
 }
 
 
