@@ -21,8 +21,8 @@ ll MOD = 1e9 + 7;
 // ----------------------
 
 
-ll gcd(ll a, ll b) { return b ? gcd(b,a%b) : a; }
-ll lcm(ll a, ll b) { return abs(a * (b/gcd(a,b))); }
+ll gcd1(ll a, ll b) { return b ? gcd(b,a%b) : a; }
+ll lcm1(ll a, ll b) { return abs(a * (b/gcd(a,b))); }
 
 template<typename T> T  poww(T num, ll k){
     if (k == 0) return 1;
